@@ -18,7 +18,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         />
 
-    <View
+    <ImageView
         android:id="@+id/currentCity"
         android:layout_width="match_parent"
         android:layout_height="350dp"
@@ -26,8 +26,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
-
-    </View>
+    </ImageView>
 
     <ImageButton
         android:id="@+id/mainBackButton"
@@ -93,14 +92,89 @@
         android:background="@color/white"
         android:layout_margin="4dp"
         app:layout_constraintTop_toBottomOf="@id/weekly_forecast"
-        app:layout_constraintBottom_toTopOf="@id/forecast"/>
+        app:layout_constraintBottom_toTopOf="@id/titlesBanner"/>
+
+    <LinearLayout
+        android:id="@+id/titlesBanner"
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:layout_margin="2dp"
+        app:layout_constraintTop_toBottomOf="@+id/separator"
+        app:layout_constraintBottom_toTopOf="@id/forecast">
+        <TextView
+            android:id="@+id/titleTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="12sp"
+            android:textColor="@color/white"
+            android:layout_weight="1"
+            android:paddingLeft="50dp"
+            android:textAlignment="center"
+            app:layout_constraintLeft_toLeftOf="@id/titlesBanner"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            tools:text="Time"/>
+        <TextView
+            android:id="@+id/titleTemp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="12sp"
+            android:textColor="@color/white"
+            android:layout_weight="1"
+            android:paddingLeft="10dp"
+            android:textAlignment="center"
+            app:layout_constraintLeft_toRightOf="@id/titleTime"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            tools:text="Temp"/>
+        <TextView
+            android:id="@+id/titleRain"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="12sp"
+            android:textColor="@color/white"
+            android:layout_weight="1"
+            android:paddingLeft="10dp"
+            android:textAlignment="center"
+            app:layout_constraintLeft_toRightOf="@id/titleTemp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            tools:text="Chance\nof Rain"/>
+        <TextView
+            android:id="@+id/titleWind"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="12sp"
+            android:textColor="@color/white"
+            android:layout_weight="1"
+            android:paddingLeft="10dp"
+            android:textAlignment="center"
+            app:layout_constraintLeft_toRightOf="@id/titleRain"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            tools:text="Wind\n(mph)"/>
+        <TextView
+            android:id="@+id/titleHumidity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="12sp"
+            android:textColor="@color/white"
+            android:layout_weight="1"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:textAlignment="center"
+            app:layout_constraintLeft_toRightOf="@id/titleWind"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            tools:text="Humidity"/>
+    </LinearLayout>
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/forecast"
         android:layout_width="match_parent"
-        android:layout_height="280dp"
-        android:layout_marginTop="2dp"
+        android:layout_height="200dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/separator"
+        app:layout_constraintTop_toBottomOf="@+id/titlesBanner"
         tools:listitem="@layout/hourly_weather_layout"/>
 
 

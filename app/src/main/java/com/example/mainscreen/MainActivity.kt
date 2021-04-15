@@ -1,10 +1,10 @@
 package com.example.mainscreen
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.format.DateFormat
 import android.view.View
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.mainscreen.databinding.ActivityMainBinding
 import com.example.mainscreen.model.Forecast
@@ -13,6 +13,7 @@ import com.example.mainscreen.model.WeatherResponse
 import com.example.mainscreen.view.WeatherScrollAdapter
 import com.example.mainscreen.view.WeatherWeeklyAdapter
 import com.example.mainscreen.viewmodel.WeatherViewModel
+import com.squareup.picasso.Picasso
 
 class MainActivity : AppCompatActivity() {
 
@@ -62,12 +63,17 @@ class MainActivity : AppCompatActivity() {
         weeklyAdapter = WeatherWeeklyAdapter(data){
             createForecastAdapter(it)
         }
+
         binding.textCity.text = data.city.name
-        binding.textDate.text = DateFormat.getDateFormat(this).toString()
-        binding.textDegrees.text = data.weather.days[0].low.toString()
+        binding.textDate.text = DateFormat.getLongDateFormat(this).toString()
+        binding.textDegrees.text = data.weather.days[0].low.toString() + "°"
+        Picasso.get().load(data.city.imageURLs.androidImageURLs.xhdpiImageURL).into(binding.currentCity)
+
+        binding.weeklyForecast.adapter = weeklyAdapter
     }
 
     private fun createForecastAdapter(data: Forecast) {
         scrollAdapter = WeatherScrollAdapter(data)
+        binding.forecast.adapter = scrollAdapter
     }
 }

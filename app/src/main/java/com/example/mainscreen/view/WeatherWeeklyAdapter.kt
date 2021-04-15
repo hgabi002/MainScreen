@@ -2,10 +2,13 @@ package com.example.mainscreen.view
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
+import com.example.mainscreen.R
 import com.example.mainscreen.databinding.WeeklyWeatherLayoutBinding
 import com.example.mainscreen.model.Forecast
 import com.example.mainscreen.model.WeatherResponse
+import com.squareup.picasso.Picasso
 
 class WeatherWeeklyAdapter(private val dataset: WeatherResponse,
     private val callback: (Forecast)->Unit): RecyclerView.Adapter<WeatherWeeklyAdapter.WeatherWeeklyViewHolder>() {
@@ -25,17 +28,27 @@ class WeatherWeeklyAdapter(private val dataset: WeatherResponse,
                     5-> "SAT"
                     else-> "SUN"
                 }
-            binding.weeklyTemp.text = dataItem.low.toString()
+            binding.weeklyTemp.text = dataItem.low.toString() + "°"
 
             when(dataItem.weatherType){
                 "sunny"->{
-                    //Picasso
+                    Picasso.get().load(R.drawable.ic_icon_weather_active_ic_sunny_active).into(binding.weeklyIcon)
                 }
-                "cloudy"->{}
-                "heavyRain"->{}
-                "lightRain"->{}
-                "partlyCloudy"->{}
-                "snowSleet"->{}
+                "cloudy"->{
+                    Picasso.get().load(R.drawable.ic_icon_weather_active_ic_cloudy_active).into(binding.weeklyIcon)
+                }
+                "heavyRain"->{
+                    Picasso.get().load(R.drawable.ic_icon_weather_active_ic_heavy_rain_active).into(binding.weeklyIcon)
+                }
+                "lightRain"->{
+                    Picasso.get().load(R.drawable.ic_icon_weather_active_ic_light_rain_active).into(binding.weeklyIcon)
+                }
+                "partlyCloudy"->{
+                    Picasso.get().load(R.drawable.ic_icon_weather_active_ic_partly_cloudy_active).into(binding.weeklyIcon)
+                }
+                "snowSleet"->{
+                    Picasso.get().load(R.drawable.ic_icon_weather_active_ic_snow_sleet_active).into(binding.weeklyIcon)
+                }
             }
         }
     }
